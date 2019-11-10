@@ -24,18 +24,18 @@
                             <div class="megamenu">
                                 <ul class="single-mega cn-col-4">
                                     <li class="title">衣服</li>
-                                    <li><a href="#">長袖</a></li>
-                                    <li><a href="#">短袖</a></li>
+                                    <li><a href="{{route('shop')}}">長袖</a></li>
+                                    <li><a href="{{route('shop')}}">短袖</a></li>
 
                                 </ul>
                                 <ul class="single-mega cn-col-4">
                                     <li class="title">褲子</li>
-                                    <li><a href="#">長褲</a></li>
-                                    <li><a href="#">短褲</a></li>
+                                    <li><a href="{{route('shop')}}">長褲</a></li>
+                                    <li><a href="{{route('shop')}}">短褲</a></li>
 
                                 </ul>
                                 <ul class="single-mega cn-col-4">
-                                    <li class="title"><a href="#">外套</a></li>
+                                    <li class="title"><a href="{{route('shop')}}">外套</a></li>
                                 </ul>
                                 <div class="single-mega cn-col-4">
                                     <img src="img/bg-img/bg-6.jpg" alt="">
