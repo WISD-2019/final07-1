@@ -3,7 +3,7 @@
         <!-- Classy Menu -->
         <nav class="classy-navbar" id="essenceNav">
             <!-- Logo -->
-            <a class="nav-brand" href="layout/master.blade.php"><img src="img/core-img/logo.png" alt=""></a>
+            <a class="nav-brand" href="#"><img src="img/core-img/logo.png" alt=""></a>
             <!-- Navbar Toggler -->
             <div class="classy-navbar-toggler">
                 <span class="navbarToggler"><span></span><span></span><span></span></span>
@@ -17,29 +17,32 @@
                 <!-- Nav Start -->
                 <div class="classynav">
                     <ul>
+                        <li><ul class="single-mega cn-col-4">
+                            <li class="title"><a href="{{route('index')}}">首頁</a></li>
+                        </ul></li>
                         <li><a href="#">購物</a>
                             <div class="megamenu">
                                 <ul class="single-mega cn-col-4">
                                     <li class="title">衣服</li>
-                                    <li><a href="shop.blade.php">長袖</a></li>
-                                    <li><a href="shop.blade.php">短袖</a></li>
+                                    <li><a href="#">長袖</a></li>
+                                    <li><a href="#">短袖</a></li>
 
                                 </ul>
                                 <ul class="single-mega cn-col-4">
                                     <li class="title">褲子</li>
-                                    <li><a href="shop.blade.php">長褲</a></li>
-                                    <li><a href="shop.blade.php">短褲</a></li>
+                                    <li><a href="#">長褲</a></li>
+                                    <li><a href="#">短褲</a></li>
 
                                 </ul>
                                 <ul class="single-mega cn-col-4">
-                                    <li class="title"><a href="shop.blade.php">外套</a></li>
+                                    <li class="title"><a href="#">外套</a></li>
                                 </ul>
                                 <div class="single-mega cn-col-4">
                                     <img src="img/bg-img/bg-6.jpg" alt="">
                                 </div>
                             </div>
                         </li>
-                        <li><a href="#">關於我們</a></li>
+                        <li><a href="{{route('about')}}">關於我們</a></li>
                         <li><a href="{{route('contact')}}">聯絡我們</a></li>
                     </ul>
                 </div>
