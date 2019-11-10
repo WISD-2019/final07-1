@@ -20,7 +20,7 @@
                         <li><ul class="single-mega cn-col-4">
                             <li class="title"><a href="{{route('index')}}">首頁</a></li>
                         </ul></li>
-                        <li><a href="#">購物</a>
+                        <li><a href="{{route('shop')}}">購物</a>
                             <div class="megamenu">
                                 <ul class="single-mega cn-col-4">
                                     <li class="title">衣服</li>
