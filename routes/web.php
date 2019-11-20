@@ -29,7 +29,7 @@ Route::get('checkout', function () {
 
 
 Route::get('shop', function () {
-    $data = Good::all();
+    $data = Good::paginate(5);
     return view('shop', ['goods' => $data]);
 })->name('shop');
 
