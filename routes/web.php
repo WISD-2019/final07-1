@@ -28,10 +28,12 @@ Route::get('checkout', function () {
 })->name('checkout');
 
 
-Route::get('shop', function () {
-    $data = Good::paginate(5);
-    return view('shop', ['goods' => $data]);
-})->name('shop');
+Route::get('shop','GoodController@show_all')->name('shop');
+Route::get('show_shortsleeve','GoodController@show_shortsleeve')->name('show_shortsleeve');
+Route::get('show_longsleeve','GoodController@show_longsleeve')->name('show_longsleeve');
+Route::get('show_trousers','GoodController@show_trousers')->name('show_trousers');
+Route::get('show_shortpants','GoodController@show_shortpants')->name('show_shortpants');
+Route::get('show_coat','GoodController@show_coat')->name('show_coat');
 
 
 Route::get('single-product-details', function () {

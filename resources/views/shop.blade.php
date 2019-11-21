@@ -34,8 +34,8 @@
                                     <li data-toggle="collapse" data-target="#clothing">
                                         <a href="#">衣服</a>
                                         <ul class="sub-menu collapse show" id="clothing">
-                                            <li><a href="#">長袖</a></li>
-                                            <li><a href="#">短袖</a></li>
+                                            <li><a href="{{route('show_longsleeve')}}">長袖</a></li>
+                                            <li><a href="{{route('show_shortsleeve')}}">短袖</a></li>
 
                                         </ul>
                                     </li>
@@ -43,14 +43,14 @@
                                     <li data-toggle="collapse" data-target="#shoes" class="collapsed">
                                         <a href="#">褲子</a>
                                         <ul class="sub-menu collapse" id="shoes">
-                                            <li><a href="#">長褲</a></li>
-                                            <li><a href="#">短褲</a></li>
+                                            <li><a href="{{route('show_trousers')}}">長褲</a></li>
+                                            <li><a href="{{route('show_shortpants')}}">短褲</a></li>
 
                                         </ul>
                                     </li>
                                     <!-- Single Item -->
                                     <li data-toggle="collapse" data-target="#accessories" class="collapsed">
-                                        <a href="#">外套</a>
+                                        <a href="{{route('show_coat')}}">外套</a>
                                     </li>
                                 </ul>
                             </div>
