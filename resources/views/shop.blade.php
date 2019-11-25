@@ -66,26 +66,26 @@
                                 <div class="product-topbar d-flex align-items-center justify-content-between">
                                     <!-- Total Products -->
                                     <div class="total-products">
-                                        <p><span>186</span>  筆商品</p>
+{{--商品記數--}}                                   <p>共<span>{{$a}}</span>筆商品</p>
                                     </div>
                                     <!-- Sorting -->
-                                    <div class="product-sorting d-flex">
+                                    {{--<div class="product-sorting d-flex">
                                         <p>經由價格排序:</p>
-                                        <form action="#" method="get">
+                                        <form  action="{{route('show_DESC',['DESC'=>$goods])}}" method="get" >
                                             <select name="select" id="sortByselect">
-                                                <option value="value">Highest Rated</option>
-                                                <option value="value">Newest</option>
-                                                <option value="value">Price: $$ - $</option>
-                                                <option value="value">Price: $ - $$</option>
+                                                <option value="value" name="DESC">由高至低</option>
+                                                <option value="value" name="ASC">由低至高</option>
+
                                             </select>
                                             <input type="submit" class="d-none" value="">
                                         </form>
-                                    </div>
+                                    </div>--}}
                                 </div>
                             </div>
                         </div>
 
                         <div class="row">
+
                         @foreach ($goods as $good)
                             <!-- Single Product -->
                             <div class="col-12 col-sm-6 col-lg-4">
@@ -118,11 +118,12 @@
                             </div>
 
 @endforeach
-{{$goods -> links()}}
+
 
 
             </div>
         </div>
+        {{$goods -> links()}}
     </section>
     <!-- ##### Shop Grid Area End ##### -->
     @endsection

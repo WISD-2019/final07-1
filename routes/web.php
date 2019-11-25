@@ -28,12 +28,15 @@ Route::get('checkout', function () {
 })->name('checkout');
 
 
+
 Route::get('shop','GoodController@show_all')->name('shop');
 Route::get('show_shortsleeve','GoodController@show_shortsleeve')->name('show_shortsleeve');
 Route::get('show_longsleeve','GoodController@show_longsleeve')->name('show_longsleeve');
 Route::get('show_trousers','GoodController@show_trousers')->name('show_trousers');
 Route::get('show_shortpants','GoodController@show_shortpants')->name('show_shortpants');
 Route::get('show_coat','GoodController@show_coat')->name('show_coat');
+Route::post('search','GoodController@search')->name('search');
+//Route::get('show_DESC/{DESC}',['GoodController@show_DESC'])->name('show_DESC');
 
 
 Route::get('single-product-details', function () {
@@ -48,7 +51,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/qq',function (){
     $first=new \App\Good;
-    $first->price='60';
+    $first->price=60;
     $first->goodsname1='黑長袖';
     $first->goodsname2='blacklongsleeve';
     $first->photo1='longsleeve1';
