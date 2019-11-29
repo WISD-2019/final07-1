@@ -69,17 +69,18 @@
 {{--商品記數--}}                                   <p>共<span>{{$a}}</span>筆商品</p>
                                     </div>
                                     <!-- Sorting -->
-                                    {{--<div class="product-sorting d-flex">
+
+                                    <div class="product-sorting d-flex">
                                         <p>經由價格排序:</p>
-                                        <form  action="{{route('show_DESC',['DESC'=>$goods])}}" method="get" >
-                                            <select name="select" id="sortByselect">
-                                                <option value="value" name="DESC">由高至低</option>
-                                                <option value="value" name="ASC">由低至高</option>
+                                        <form action="{{route('show_DESC')}}">
+                                            <select name="sorts" id="sortByselect">
+                                                <option value="DESC" >由高至低</option>
+                                                <option value="ASC" >由低至高</option>
 
                                             </select>
-                                            <input type="submit" class="d-none" value="">
+                                            <input type="submit"  value="123">
                                         </form>
-                                    </div>--}}
+                                    </div>
                                 </div>
                             </div>
                         </div>

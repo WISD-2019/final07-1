@@ -36,7 +36,7 @@ Route::get('show_trousers','GoodController@show_trousers')->name('show_trousers'
 Route::get('show_shortpants','GoodController@show_shortpants')->name('show_shortpants');
 Route::get('show_coat','GoodController@show_coat')->name('show_coat');
 Route::post('search','GoodController@search')->name('search');
-//Route::get('show_DESC/{DESC}',['GoodController@show_DESC'])->name('show_DESC');
+Route::get('show_DESC','GoodController@show_DESC')->name('show_DESC');
 
 
 Route::get('single-product-details', function () {
