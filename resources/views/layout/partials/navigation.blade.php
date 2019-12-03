@@ -54,8 +54,8 @@
         <div class="header-meta d-flex clearfix justify-content-end">
             <!-- Search Area -->
             <div class="search-area">
-                <form action="{{route('search')}}" method="POST">
-                        {{csrf_field()}}
+                <form action="{{route('search')}}" method="get">
+
                     <input type="text" name="search" id="search" placeholder="搜尋">
                     <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                 </form>

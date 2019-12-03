@@ -35,9 +35,9 @@ Route::get('show_longsleeve','GoodController@show_longsleeve')->name('show_longs
 Route::get('show_trousers','GoodController@show_trousers')->name('show_trousers');
 Route::get('show_shortpants','GoodController@show_shortpants')->name('show_shortpants');
 Route::get('show_coat','GoodController@show_coat')->name('show_coat');
-Route::post('search','GoodController@search')->name('search');
-Route::get('show_DESC','GoodController@show_DESC')->name('show_DESC');
-
+Route::get('search','GoodController@search')->name('search');
+//Route::get('show_DESC','GoodController@show_DESC')->name('show_DESC');
+ //Route::get('abc','GoodController@abc')->name('abc');
 
 Route::get('single-product-details', function () {
     return view('single-product-details');

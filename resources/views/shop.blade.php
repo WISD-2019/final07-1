@@ -72,7 +72,7 @@
 
                                     <div class="product-sorting d-flex">
                                         <p>經由價格排序:</p>
-                                        <form action="{{route('show_DESC')}}">
+                                        <form action="#">
                                             <select name="sorts" id="sortByselect">
                                                 <option value="DESC" >由高至低</option>
                                                 <option value="ASC" >由低至高</option>
@@ -84,7 +84,7 @@
                                 </div>
                             </div>
                         </div>
-
+<?php session()->push('adas',$goods);?>
                         <div class="row">
 
                         @foreach ($goods as $good)
@@ -121,10 +121,13 @@
 @endforeach
 
 
-
             </div>
         </div>
-        {{$goods -> links()}}
+
+
+        @isset($search) {{$goods ->appends(['search'=>$search])->render()}}
+           @else{{$goods->render()}}
+            @endisset
     </section>
     <!-- ##### Shop Grid Area End ##### -->
     @endsection
