@@ -57,7 +57,14 @@ return view('shop',['goods' =>$data,'a'=>$a]);
     }
 
 
+public function details($id){
 
+$data=Good::where('id','=',$id)->get();
+
+
+return view('single-product-details',['data'=>$data]);
+
+}
 
 
 }

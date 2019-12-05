@@ -12,11 +12,11 @@
     <title>@yield('title')</title>
 
     <!-- Favicon  -->
-    <link rel="icon" href="img/core-img/favicon.ico">
+    <link rel="icon" href="{{asset('/img/core-img/favicon.ico')}}">
 
     <!-- Core Style CSS -->
-    <link rel="stylesheet" href="css/core-style.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{asset('/css/core-style.css')}}">
+    <link rel="stylesheet" href="{{asset('/style.css')}}">
 
 </head>
 
@@ -29,17 +29,17 @@
 <!-- ##### Footer Area End ##### -->
 
 <!-- jQuery (Necessary for All JavaScript Plugins) -->
-<script src="{{asset('js/jquery/jquery-2.2.4.min.js')}}"></script>
+<script src="{{asset('/js/jquery/jquery-2.2.4.min.js')}}"></script>
 <!-- Popper js -->
-<script src="{{asset('js/popper.min.js')}}"></script>
+<script src="{{asset('/js/popper.min.js')}}"></script>
 <!-- Bootstrap js -->
-<script src="{{asset('js/bootstrap.min.js')}}"></script>
+<script src="{{asset('/js/bootstrap.min.js')}}"></script>
 <!-- Plugins js -->
-<script src="{{asset('js/plugins.js')}}"></script>
+<script src="{{asset('/js/plugins.js')}}"></script>
 <!-- Classy Nav js -->
-<script src="{{asset('js/classy-nav.min.js')}}"></script>
+<script src="{{asset('/js/classy-nav.min.js')}}"></script>
 <!-- Active js -->
-<script src="{{asset('js/active.js')}}"></script>
+<script src="{{asset('/js/active.js')}}"></script>
 </body>
 
 </html>

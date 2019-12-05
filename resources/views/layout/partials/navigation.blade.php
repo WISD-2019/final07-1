@@ -3,7 +3,7 @@
         <!-- Classy Menu -->
         <nav class="classy-navbar" id="essenceNav">
             <!-- Logo -->
-            <a class="nav-brand" href="#"><img src="img/core-img/logo.png" alt=""></a>
+            <a class="nav-brand" href="#"><img src="{{asset('/img/core-img/logo.png')}}" alt=""></a>
             <!-- Navbar Toggler -->
             <div class="classy-navbar-toggler">
                 <span class="navbarToggler"><span></span><span></span><span></span></span>
@@ -38,7 +38,7 @@
                                     <li class="title"><a href="{{route('show_coat')}}">外套</a></li>
                                 </ul>
                                 <div class="single-mega cn-col-4">
-                                    <img src="img/bg-img/bg-6.jpg" alt="">
+                                    <img src="{{asset('/img/bg-img/bg-6.jpg')}}" alt="">
                                 </div>
                             </div>
                         </li>
@@ -93,7 +93,7 @@
 
             <!-- Cart Area -->
             <div class="cart-area">
-                <a href="{{route('checkout')}}" id="essenceCartBtn"><img src="img/core-img/bag.svg" alt=""> <span>3</span></a>
+                <a href="{{route('checkout')}}" id="essenceCartBtn"><img src="{{asset('/img/core-img/bag.svg')}}" alt=""> <span>3</span></a>
             </div>
         </div>
 

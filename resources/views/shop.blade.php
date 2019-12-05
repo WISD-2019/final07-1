@@ -1,6 +1,7 @@
 @extends('layout.master')
 @section('title','shop')
 @section('content')
+
     <!-- ##### Breadcumb Area Start ##### -->
     <div class="breadcumb_area bg-img" style="background-image: url(img/bg-img/breadcumb.jpg);">
         <div class="container h-100">
@@ -102,7 +103,7 @@
                                     <!-- Product Description -->
                                     <div class="product-description">
 
-                                        <a href="single-product-details.blade.php">
+                                        <a href="{{route('details',[$good->id])}}">
                                             <h6>{{$good->goodsname1}}</h6>
                                         </a>
                                         <p class="product-price">{{$good->price}}</p>

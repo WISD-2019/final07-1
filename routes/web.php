@@ -39,9 +39,10 @@ Route::get('search','GoodController@search')->name('search');
 //Route::get('show_DESC','GoodController@show_DESC')->name('show_DESC');
  //Route::get('abc','GoodController@abc')->name('abc');
 
-Route::get('single-product-details', function () {
-    return view('single-product-details');
-})->name('single-product-details');
+Route::get('details/{id}','GoodController@details')->name('details');
+
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
