@@ -4,6 +4,7 @@
     <section class="single_product_details_area d-flex align-items-center">
 @foreach($data as $date)
         <!-- Single Product Thumb -->
+
         <div class="single_product_thumb clearfix">
             <div class="product_thumbnail_slides owl-carousel">
                 <img src="../img/product-img/{{$date->photo1}}.png" alt="">
@@ -13,23 +14,32 @@
         </div>
 
         <!-- Single Product Description -->
-        <div class="single_product_desc clearfix">
+        <div class="single_product_desc clearfix" >
+            @if (Session::has('message'))
+                <div class="alert alert-success">
+                    {{ Session::get('message') }}
+                </div>
+            @endif
 
-            <a href="cart.html">
+
+
+
+            <a >
                 <h2>{{$date->goodsname1}}</h2>
             </a>
             <p class="product-price">{{$date->price}}</p>
             <p class="product-desc">Mauris viverra cursus ante laoreet eleifend. Donec vel fringilla ante. Aenean finibus velit id urna vehicula, nec maximus est sollicitudin.</p>
 
             <!-- Form -->
-            <form class="cart-form clearfix" method="post">
+            <form action="{{route('cart_add',$date->id)}}" class="cart-form clearfix" method="post">
                 <!-- Select Box -->
+                {{csrf_field()}}
                 <div class="select-box d-flex mt-50 mb-30">
                     <select name="size" id="productSize" class="mr-5" >
-                        <option value="value">尺寸: XL</option>
-                        <option value="value">尺寸: X</option>
-                        <option value="value">尺寸: M</option>
-                        <option value="value" >尺寸: S</option>
+                        <option value="XL">尺寸: XL</option>
+                        <option value="X">尺寸: X</option>
+                        <option value="M">尺寸: M</option>
+                        <option value="S" >尺寸: S</option>
                     </select>
                     <select name="quantity" id="productColor">
                         <option value="1">數量:1</option>

@@ -21,9 +21,10 @@
                 <h5>Quantity</h5>
             </div>
         </td>
-        <td width="5" align="center" valign="center">
+
+        <td width="200" align="center" valign="center">
             <div class="product-right1">
-                <h5></h5>
+                <h5>Size</h5>
             </div>
         </td>
         <td width="200" align="center" valign="center">
@@ -31,6 +32,7 @@
                 <h5>Total</h5>
             </div>
         </td>
+
         <td width="200" align="center" valign="center">
         </td>
     </tr>
@@ -57,17 +59,19 @@
             </td>
             <td width="50" align="center" valign="center">
                 <div class="product-right1">
-                    <h6></h6>
+                    <h6>{{$cart->quantity}}</h6>
                 </div>
             </td>
-            <td width="5" align="center" valign="center">
-                <div class="product-right1">
 
+            <td width="200" align="center" valign="center">
+                <div class="product-right1">
+                    <h6></h6>
+                    <div> {{$cart->size}}</div>
                 </div>
             </td>
             <td width="200" align="center" valign="center">
                 <div class="product-right1">
-                    <h6></h6>
+                    <h6>{{$cart->price * $cart->quantity}}</h6>
                     <div class="close"> </div>
                 </div>
             </td>

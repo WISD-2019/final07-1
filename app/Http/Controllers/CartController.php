@@ -13,8 +13,10 @@ class CartController extends Controller
 {
 
 
-    public function add($id){
+    public function add(Request $request,$id){
         if(Auth::check()){
+$size=$request->size;
+$quantity=$request->quantity;
 $price=Good::where('id','=',$id)->value('price');
 $goodsname1=Good::where('id','=',$id)->value('goodsname1');
 $goodsname2=Good::where('id','=',$id)->value('goodsname2');
@@ -23,6 +25,8 @@ $photo2=Good::where('id','=',$id)->value('photo2');
 $type=Good::where('id','=',$id)->value('type');
 
 $add=DB::table('carts')->insert(['price'=>$price,
+    'size'=>$size,
+    'quantity'=>$quantity,
     'goodsname1'=>$goodsname1,
     'goodsname2'=>$goodsname2,
     'photo1'=>$photo1,
@@ -30,6 +34,7 @@ $add=DB::table('carts')->insert(['price'=>$price,
     'type'=>$type,
     'user_id'=>Auth::user()->id
     ]);
+session()->flash('message','成功加入');
         return Redirect::to(url()->previous());}
 else
     return view('auth.login');
@@ -38,9 +43,12 @@ else
     }
 
     public function show(){
+        if(Auth::check()){
 $date=Cart::where('user_id','=',Auth::user()->id)->get();
-return view('cart',['carts'=>$date]);
+return view('cart',['carts'=>$date]);}
 
+else
+    return view('auth.login');
     }
 
 public function delete($id){

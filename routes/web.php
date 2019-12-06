@@ -42,7 +42,7 @@ Route::get('search','GoodController@search')->name('search');
 Route::get('details/{id}','GoodController@details')->name('details');
 
 
-Route::get('cart_add/{id}','CartController@add')->name('cart_add');
+Route::post('cart_add/{id}','CartController@add')->name('cart_add');
 Route::get('cart_show','CartController@show')->name('cart_show');
 Route::delete('cart_delete/{id}','CartController@delete')->name('cart_delete');
 

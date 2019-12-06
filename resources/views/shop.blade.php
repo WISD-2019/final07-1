@@ -112,7 +112,7 @@
                                         <div class="hover-content">
                                             <!-- Add to Cart -->
                                             <div class="add-to-cart-btn">
-                                                <a href="{{route('cart_add',$good->id)}}" class="btn essence-btn">Add to Cart</a>
+                                                <a href="{{route('details',$good->id)}}" class="btn essence-btn">Add to Cart</a>
                                             </div>
                                         </div>
                                     </div>
