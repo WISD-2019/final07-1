@@ -1,6 +1,7 @@
 @extends('layout.master')
 @section('title','checkout')
 @section('content')
+
     <!-- ##### Checkout Area Start ##### -->
     <div class="checkout_area section-padding-80">
         <div class="container">
@@ -16,13 +17,10 @@
                         <form action="#" method="post">
                             <div class="row">
                                 <div class="col-md-6 mb-3">
-                                    <label for="first_name">姓氏 <span>*</span></label>
-                                    <input type="text" class="form-control" id="first_name" value="" required>
+                                    <label for="first_name">姓名<span>*</span></label>
+                                    <input type="text" class="form-control" id="first_name" value="{{Auth::user()->name}}" >
                                 </div>
-                                <div class="col-md-6 mb-3">
-                                    <label for="last_name">名子 <span>*</span></label>
-                                    <input type="text" class="form-control" id="last_name" value="" required>
-                                </div>
+
                                 <div class="col-12 mb-3">
                                     <label for="company">公司名稱</label>
                                     <input type="text" class="form-control" id="company" value="">
@@ -94,14 +92,13 @@
                         </div>
 
                         <ul class="order-details-form mb-4">
-                            <li><span>產品</span> <span>總額</span></li>
-                            <li><span>Cocktail Yellow dress</span> <span>$59.90</span></li>
-                            <li><span>Subtotal</span> <span>$59.90</span></li>
-                            <li><span>Shipping</span> <span>Free</span></li>
-                            <li><span>Total</span> <span>$59.90</span></li>
+                            <li><span>產品</span><span>數量</span><span>SIZE</span><span>總額</span></li>
+                            @foreach($data as $date)
+                            <li><span>{{$date->goodsname1}}</span><span>{{$date->quantity}}</span><span>{{$date->size}}</span><span>{{$date->price* $date->quantity}}</span></li>
+                            @endforeach
+                            <li><span>Total</span><span></span><span></span><span>{{$a}}</span></li>
                         </ul>
-
-                        <div id="accordion" role="tablist" class="mb-4">
+          <div id="accordion" role="tablist" class="mb-4">
                             <div class="card">
                                 <div class="card-header" role="tab" id="headingOne">
                                     <h6 class="mb-0">

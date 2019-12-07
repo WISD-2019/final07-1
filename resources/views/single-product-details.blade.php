@@ -3,6 +3,7 @@
 @section('content')
     <section class="single_product_details_area d-flex align-items-center">
 @foreach($data as $date)
+
         <!-- Single Product Thumb -->
 
         <div class="single_product_thumb clearfix">

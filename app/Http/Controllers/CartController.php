@@ -37,7 +37,7 @@ $add=DB::table('carts')->insert(['price'=>$price,
 session()->flash('message','成功加入');
         return Redirect::to(url()->previous());}
 else
-    return view('auth.login');
+    return redirect()->route('login');
 
 
     }
@@ -48,13 +48,32 @@ $date=Cart::where('user_id','=',Auth::user()->id)->get();
 return view('cart',['carts'=>$date]);}
 
 else
-    return view('auth.login');
+    return redirect()->route('login');
     }
 
 public function delete($id){
+    if(Auth::check()){
     Cart::destroy($id);
 
-    return redirect()->route('cart_show');
+    return redirect()->route('cart_show');}
+    else
+        return redirect()->route('login');
 
+}
+
+public  function  checkout(){
+        if(Auth::check()){
+
+        $number=0;
+$show=Cart::where('user_id','=',Auth::user()->id)->get();
+
+foreach($show as $abc){
+    $number=$number+$abc->price*$abc->quantity;
+}
+
+
+return view('checkout',['data'=>$show,'a'=>$number]);}
+        else
+            return redirect()->route('login');
 }
 }

@@ -89,7 +89,7 @@
         </table>
 
         <div class="add-to-cart-btn">
-            <a href="" class="btn essence-btn">下單</a>
+            <a href="{{route('checkout')}}" class="btn essence-btn">下單</a>
         </div>
 
         <div class="clearfix mr-50 mt-50 mb-50">
