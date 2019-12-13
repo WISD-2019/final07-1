@@ -16,11 +16,8 @@
 
         <!-- Single Product Description -->
         <div class="single_product_desc clearfix" >
-            @if (Session::has('message'))
-                <div class="alert alert-success">
-                    {{ Session::get('message') }}
-                </div>
-            @endif
+
+
 
 
 

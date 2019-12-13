@@ -98,4 +98,11 @@
         </div>
 
     </div>
+    @if (Session::has('message'))
+        <script>
+
+            alert("{{session('message')}}");
+
+        </script>
+    @endif
 </header>

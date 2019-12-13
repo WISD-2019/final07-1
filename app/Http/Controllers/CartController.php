@@ -37,18 +37,21 @@ $add=DB::table('carts')->insert(['price'=>$price,
 session()->flash('message','成功加入');
         return Redirect::to(url()->previous());}
 else
-    return redirect()->route('login');
+    session()->flash('message','請先登入');
+    return  Redirect::to('login');
+
 
 
     }
 
     public function show(){
         if(Auth::check()){
-$date=Cart::where('user_id','=',Auth::user()->id)->get();
+$date=Cart::where('user_id','=',Auth::user()->id)->paginate(5);
 return view('cart',['carts'=>$date]);}
 
 else
-    return redirect()->route('login');
+    session()->flash('message','請先登入');
+        return  Redirect::to('login');
     }
 
 public function delete($id){
@@ -57,7 +60,8 @@ public function delete($id){
 
     return redirect()->route('cart_show');}
     else
-        return redirect()->route('login');
+        session()->flash('message','請先登入');
+    return  Redirect::to('login');
 
 }
 
@@ -74,6 +78,7 @@ foreach($show as $abc){
 
 return view('checkout',['data'=>$show,'a'=>$number]);}
         else
-            return redirect()->route('login');
+            session()->flash('message','請先登入');
+    return  Redirect::to('login');
 }
 }
