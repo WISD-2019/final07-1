@@ -11,6 +11,7 @@ use App\Good;
 |
 */
 
+//基本標籤列的連結
 Route::get('/', function () {
     return view('blog');
 })->name('index');
@@ -20,13 +21,15 @@ Route::get('contact', function () {
 })->name('contact');
 
 Route::get('about', function () {
-    return view('regular-page');
+    return view('admin.dashboard.index');
 })->name('about');
 
 
 
 
 
+
+//不用登入就能使用的路由
 Route::get('shop','GoodController@show_all')->name('shop');
 Route::get('show_shortsleeve','GoodController@show_shortsleeve')->name('show_shortsleeve');
 Route::get('show_longsleeve','GoodController@show_longsleeve')->name('show_longsleeve');
@@ -34,20 +37,32 @@ Route::get('show_trousers','GoodController@show_trousers')->name('show_trousers'
 Route::get('show_shortpants','GoodController@show_shortpants')->name('show_shortpants');
 Route::get('show_coat','GoodController@show_coat')->name('show_coat');
 Route::get('search','GoodController@search')->name('search');
-//Route::get('show_DESC','GoodController@show_DESC')->name('show_DESC');
- //Route::get('abc','GoodController@abc')->name('abc');
-
 Route::get('details/{id}','GoodController@details')->name('details');
 
 
+
+//購物車路由
 Route::post('cart_add/{id}','CartController@add')->name('cart_add');
 Route::get('cart_show','CartController@show')->name('cart_show');
 Route::delete('cart_delete/{id}','CartController@delete')->name('cart_delete');
 Route::get('checkout','CartController@checkout')->name('checkout');
+Route::get('order_show','CartController@order_show')->name('order_show');
+Route::get('order_create','CartController@order_create')->name('order_create');
+Route::get('order_detail/{id}','CartController@order_detail')->name('order_detail');
 
+
+//會員路由
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+
+//後台路由
+Route::get('AdminDashboard.index','AdminDashboardController@index')->name('AdminDashboardController_index');
+Route::get('AdminDashboard.create','AdminDashboardController@create')->name('AdminDashboardController_create');
+Route::get('AdminDashboard.edit','AdminDashboardController@edit')->name('AdminDashboardController_edit');
+Route::post('AdminDashboard.create1','AdminDashboardController@create1')->name('AdminDashboardController_create1');
 
 
 

@@ -1,6 +1,17 @@
 @extends('layout.master')
 @section('title','single-product-details')
 @section('content')
+    <div class="breadcumb_area bg-img" style="background-image: url(img/bg-img/breadcumb.jpg);">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12">
+                    <div class="page-title text-center">
+                        <h2>CART</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <table>
     <tr>
         <td width="200" align="center" valign="center">
@@ -43,7 +54,7 @@
         <tr >
             <td width="200" align="center" valign="center">
                 <div class="product-left">
-                    <img src={{asset("/img/product-img/$cart->photo1.png")}}>
+                    <img src={{asset("storage/img/product-img/$cart->photo1")}}>
                 </div>
             </td>
             <td width="250" align="center" valign="center">
@@ -99,5 +110,5 @@
 
 
 
-    <br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     {{$carts->render()}}

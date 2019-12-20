@@ -85,7 +85,6 @@
                                 </div>
                             </div>
                         </div>
-<?php session()->push('adas',$goods);?>
                         <div class="row">
 
                         @foreach ($goods as $good)
@@ -94,9 +93,9 @@
                                 <div class="single-product-wrapper">
                                     <!-- Product Image -->
                                     <div class="product-img">
-                                        <img src="../img/product-img/{{$good->photo1}}.png" alt="">
+                                        <img src="{{asset("storage/img/product-img/$good->photo1")}}" alt="">
                                         <!-- Hover Thumb -->
-                                        <img class="hover-img" src="../img/product-img/{{$good->photo2}}.png" alt="">
+                                        <img class="hover-img" src="{{asset("storage/img/product-img/$good->photo2")}}" alt="">
 
                                     </div>
 

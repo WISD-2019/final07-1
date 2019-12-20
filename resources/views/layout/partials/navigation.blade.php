@@ -77,6 +77,7 @@
                         {{ Auth::user()->name }} <span class="caret"></span>
                     </a>
 
+
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{ route('logout') }}"
                            onclick="event.preventDefault();
@@ -87,9 +88,28 @@
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
                         </form>
+                        @if(Auth::user()->role==1)
+                        <a class="dropdown-item"  href="{{route('AdminDashboardController_index')}}">管理員</a>
+                            @endif
                     </div>
+
+
                 </li>
             @endguest
+        <!-- User Login Info -->
+@if(Auth::check())
+            <div class="user-login-info">
+
+                <a href="{{route('order_show')}}"><img src="{{asset('/img/core-img/user.svg')}}" alt=""></a>
+
+            </div>
+            @else
+                <div class="user-login-info">
+
+                    <a href="{{route('login')}}"><img src="{{asset('/img/core-img/user.svg')}}" alt=""></a>
+
+                </div>
+            @endif
 
             <!-- Cart Area -->
             <div class="cart-area">

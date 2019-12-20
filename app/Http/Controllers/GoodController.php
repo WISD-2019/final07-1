@@ -18,33 +18,33 @@ class GoodController extends Controller
         return view('shop', ['goods' => $data,'a'=>$a]);
     }
     public function show_longsleeve(){
-        $data=Good::where('type','=','longsleeve')->paginate(5);
-        $a=Good::where('type','=','longsleeve')->count();
+        $data=Good::where('type','=','長袖')->paginate(5);
+        $a=Good::where('type','=','長袖')->count();
 
 
 return view('shop',['goods' =>$data,'a'=>$a]);
     }
     public function show_shortsleeve(){
-        $data=Good::where('type','=','shortsleeve')->paginate(5);
-        $a=Good::where('type','=','shortsleeve')->count();
+        $data=Good::where('type','=','短袖')->paginate(5);
+        $a=Good::where('type','=','短袖')->count();
 
         return view('shop', ['goods' => $data,'a'=>$a]);
     }
     public function show_trousers(){
-        $data=Good::where('type','=','trousers')->paginate(5);
-        $a=Good::where('type','=','trousers')->count();
+        $data=Good::where('type','=','長褲')->paginate(5);
+        $a=Good::where('type','=','長褲')->count();
 
         return view('shop', ['goods' => $data,'a'=>$a]);
     }
     public function show_shortpants(){
-        $data=Good::where('type','=','shortpants')->paginate(5);
-        $a=Good::where('type','=','shortpants')->count();
+        $data=Good::where('type','=','短褲')->paginate(5);
+        $a=Good::where('type','=','短褲')->count();
 
         return view('shop', ['goods' => $data,'a'=>$a]);
     }
     public function show_coat(){
-        $data=Good::where('type','=','coat')->paginate(5);
-        $a=Good::where('type','=','coat')->count();
+        $data=Good::where('type','=','外套')->paginate(5);
+        $a=Good::where('type','=','外套')->count();
 
         return view('shop', ['goods' => $data,'a'=>$a]);
     }

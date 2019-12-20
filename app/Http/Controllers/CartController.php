@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Order;
 use Redirect;
 use App\Cart;
 use App\Http\Middleware\RedirectIfAuthenticated;
@@ -80,5 +81,69 @@ return view('checkout',['data'=>$show,'a'=>$number]);}
         else
             session()->flash('message','請先登入');
     return  Redirect::to('login');
+}
+
+public function order_create(){
+    if(Auth::check()){//登入驗證
+        $number=0;
+        $show=Cart::where('user_id','=',Auth::user()->id)->get();//先抓出購物車裡和user.id相同的商品
+        foreach($show as $abc){
+            $number=$number+$abc->price*$abc->quantity;//計算購物車總金額
+        }
+        $numbb=date('ymdhis')."-".rand(0,10);//用亂數產生訂單編號
+
+        foreach($show as $abc){//將購物車每一筆存入訂單資料表中 並賦予訂單編號欄位
+            $create_order=new Order();
+            $create_order->order_id=$numbb;
+            $create_order->price=$abc->price;
+            $create_order->size=$abc->size;
+            $create_order->quantity=$abc->quantity;
+            $create_order->goodsname1=$abc->goodsname1;
+            $create_order->goodsname2=$abc->goodsname2;
+            $create_order->photo1=$abc->photo1;
+            $create_order->photo2=$abc->photo2;
+            $create_order->type=$abc->type;
+            $create_order->total=$number;
+            $create_order->user_id=Auth::user()->id;
+            $create_order->save();
+        }
+
+        $order_show=DB::table('users')->leftJoin('orders','users.id','=','user_id')//找出users資料表中id欄位與orders資料表中user_id欄位相同的資料
+            ->select('users.name','users.id','orders.order_id','orders.created_at','orders.total')//只要users資料表中name欄位和id欄位,和orders資料表中order_id欄位和created_at欄位跟total欄位
+            ->where('users.id','=',Auth::user()->id)->distinct('orders.order_id')->get();//進階搜尋上述的資料進行篩選users資料表中id與現在登入的id相符者
+                                                                                                                //,並且用distinct限制orders資料表中的order_id不能重複
+
+        Cart::where('user_id','=',Auth::user()->id)->delete();//刪除與使用者相同id的購物車商品資訊
+        return view('order',['date'=>$order_show]);//回傳資料
+}
+    else
+        session()->flash('message','請先登入');
+    return redirect(route('login'));
+}
+
+public function order_show(){
+        if(Auth::check()){
+        $test=DB::table('orders')->where('user_id','=',Auth::user()->id)->first();//找出orders資料表中是否有訂單
+        if($test==null){//若無
+            session()->flash('message','沒有訂單');
+            return view('order');
+        }
+    else{
+        $order_show=DB::table('users')->leftJoin('orders','users.id','=','user_id')
+            ->select('users.name','users.id','orders.order_id','orders.created_at','orders.total')
+            ->where('users.id','=',Auth::user()->id)->distinct('orders.order_id')->get();
+        return view('order',['date'=>$order_show]);
+    }
+        }
+        else
+            session()->flash('message','請先登入');
+            return redirect(route('login'));
+
+}
+
+public function order_detail($id){
+        $show=DB::table('users')->leftJoin('orders','users.id','=','user_id')
+            ->where('order_id','=',$id)->get();
+        return view('order_detail',['data'=>$show]);
 }
 }

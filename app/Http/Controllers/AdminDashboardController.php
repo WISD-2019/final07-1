@@ -1,0 +1,58 @@
+<?php
+
+namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Auth;
+use App\Good;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+
+class AdminDashboardController extends Controller
+{
+    public function index(){
+        $order_show=DB::table('users')->leftJoin('orders','users.id','=','user_id')
+            ->select('users.name','users.id','orders.order_id','orders.created_at','orders.total')
+            ->distinct('orders.order_id')->get();
+        return view('admin.dashboard.index',['data'=>$order_show]);
+
+    }
+    public function create(){
+
+
+
+    return view('admin.posts.create');
+}
+
+    public function edit(){
+
+        return view('admin.posts.edit');
+    }
+public function create1(Request $request){
+
+    $name1=iconv("UTF-8","BIG-5",$_FILES['photo1']['name']);//更改編碼 以免遇到中文字存取不了
+    $file=explode(".",$name1); //將檔案名稱和檔案類型逕行分隔微陣列[0],[1]
+    $new_name=$file[0]."-".date('ymdhis')."-".rand(0,10);//陣列[0]為檔名
+    $chi_name=iconv("BIG-5","UTF-8",$new_name);//新檔名為=舊檔名-時間-隨機1~10數字.舊檔案名稱的類型
+
+    $name2=iconv("UTF-8","BIG-5",$_FILES['photo2']['name']);
+    $file2=explode(".",$name2);
+    $new_name2=$file2[0]."-".date('ymdhis')."-".rand(0,10);
+    $chi_name2=iconv("BIG-5","UTF-8",$new_name2);
+
+    $creat= new Good();//使用Good物件存商品資訊進Good資料表
+    $creat->price=$request->price;
+    $creat->goodsname1=$request->goodsname1;
+    $creat->photo1=$chi_name;
+    $creat->photo2=$chi_name2;
+    $creat->type=$request->type;
+    $creat->save();
+//檔案儲存至 storage底下的public/ing/product-img 並且使用php artisan storage:link使得public資料夾共用storage資料夾 以方便使用asset方法抓取資料
+   $request->file('photo1')->storeas('public/img/product-img',$chi_name);
+    $request->file('photo2')->storeas('public/img/product-img',$chi_name2);
+
+session()->flash('message','新增成功');
+    return redirect(route('AdminDashboardController_create'));
+}
+
+
+}

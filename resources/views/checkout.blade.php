@@ -150,7 +150,7 @@
                             </div>
                         </div>
 
-                        <a href="#" class="btn essence-btn">Place Order</a>
+                        <a href="{{route('order_create')}}" class="btn essence-btn">Place Order</a>
                     </div>
                 </div>
             </div>
