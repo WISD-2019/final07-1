@@ -89,7 +89,7 @@
                             @csrf
                         </form>
                         @if(Auth::user()->role==1)
-                        <a class="dropdown-item"  href="{{route('AdminDashboardController_index')}}">管理員</a>
+                        <a class="dropdown-item"  href="{{route('AdminDashboardController_order_index')}}">管理員</a>
                             @endif
                     </div>
 
@@ -124,5 +124,6 @@
             alert("{{session('message')}}");
 
         </script>
+
     @endif
 </header>

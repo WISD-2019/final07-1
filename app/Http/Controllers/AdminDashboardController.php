@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Order;
 use Illuminate\Support\Facades\Auth;
 use App\Good;
 use Illuminate\Http\Request;
@@ -9,25 +10,27 @@ use Illuminate\Support\Facades\Storage;
 
 class AdminDashboardController extends Controller
 {
-    public function index(){
-        $order_show=DB::table('users')->leftJoin('orders','users.id','=','user_id')
+
+    public function __construct()
+    {
+        return $this->middleware('dashboard');
+    }
+
+    public function order_index(){
+        $order_show=DB::table('orders')->leftJoin('users','user_id','=','users.id')
             ->select('users.name','users.id','orders.order_id','orders.created_at','orders.total')
             ->distinct('orders.order_id')->get();
         return view('admin.dashboard.index',['data'=>$order_show]);
 
     }
-    public function create(){
+    public function goods_create(){
 
 
 
     return view('admin.posts.create');
 }
 
-    public function edit(){
-
-        return view('admin.posts.edit');
-    }
-public function create1(Request $request){
+public function goods_create1(Request $request){
 
     $name1=iconv("UTF-8","BIG-5",$_FILES['photo1']['name']);//更改編碼 以免遇到中文字存取不了
     $file=explode(".",$name1); //將檔案名稱和檔案類型逕行分隔微陣列[0],[1]
@@ -50,9 +53,31 @@ public function create1(Request $request){
    $request->file('photo1')->storeas('public/img/product-img',$chi_name);
     $request->file('photo2')->storeas('public/img/product-img',$chi_name2);
 
-session()->flash('message','新增成功');
-    return redirect(route('AdminDashboardController_create'));
+    return redirect(route('AdminDashboardController_goods_create'))->with('message','新增成功');
 }
+public function goods_show()
+{
+$show=DB::table('goods')->get();
+return view('admin.posts.goods_show',['data'=>$show]);
+}
+
+public function goods_delete($id)
+{
+    Good::destroy($id);
+
+    return redirect(route('AdminDashboardController_goods_show'))->with('message','刪除成功');
+
+
+}
+
+public function order_delete($id)
+{
+    Order::where('order_id','=',$id)->delete();
+
+    return redirect(route('AdminDashboardController_order_index'))->with('message','刪除成功');
+
+}
+
 
 
 }

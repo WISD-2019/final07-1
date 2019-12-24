@@ -23,18 +23,15 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> 管理員 <b class="caret"></b></a>
             <ul class="dropdown-menu">
                 <li>
-                    <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
+                    <a href="{{route('index')}}"><i class="fa fa-fw fa-user"></i> 回前端</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
+                    <a href="{{route('logout')}}"  onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
                 </li>
-                <li>
-                    <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
-                </li>
-                <li class="divider"></li>
-                <li>
-                    <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
-                </li>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
             </ul>
         </li>
     </ul>
@@ -42,16 +39,16 @@
     <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav side-nav">
             <li class="active">
-                <a href="{{route('AdminDashboardController_index')}}"><i class="fa fa-fw fa-dashboard"></i> 主控台</a>
+                <a href="{{route('AdminDashboardController_order_index')}}"><i class="fa fa-fw fa-dashboard"></i> 主控台</a>
             </li>
             <li>
-                <a href="{{route('AdminDashboardController_index')}}"><i class="fa fa-fw fa-edit"></i> 訂單管理</a>
+                <a href="{{route('AdminDashboardController_order_index')}}"><i class="fa fa-fw fa-edit"></i> 訂單管理</a>
             </li>
             <li>
-                <a href="{{route('AdminDashboardController_create')}}"><i class="fa fa-fw fa-edit"></i> 商品新增</a>
+                <a href="{{route('AdminDashboardController_goods_create')}}"><i class="fa fa-fw fa-edit"></i> 商品新增</a>
             </li>
             <li>
-                <a href="{{route('AdminDashboardController_edit')}}"><i class="fa fa-fw fa-edit"></i> 商品編輯</a>
+                <a href="{{route('AdminDashboardController_goods_show')}}"><i class="fa fa-fw fa-edit"></i> 商品編輯</a>
             </li>
         </ul>
     </div>

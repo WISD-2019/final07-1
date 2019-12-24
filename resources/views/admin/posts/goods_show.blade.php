@@ -7,11 +7,11 @@
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">
-            訂單管理 <small></small>
+            商品總覽<small></small>
         </h1>
         <ol class="breadcrumb">
             <li class="active">
-                <i class="fa fa-dashboard"></i> 訂單管理
+                <i class="fa fa-dashboard"></i> 商品總覽
             </li>
         </ol>
     </div>
@@ -27,22 +27,17 @@
         </td>
         <td width="200" align="center" valign="center">
             <div class="product-left">
-                <h5>訂單編號</h5>
+                <h5>商品名稱</h5>
             </div>
         </td>
         <td width="200" align="center" valign="center">
             <div class="product-left">
-                <h5>姓名</h5>
+                <h5>商品價格</h5>
             </div>
         </td>
         <td width="200" align="center" valign="center">
             <div class="product-left">
-                <h5>下單日期</h5>
-            </div>
-        </td>
-        <td width="200" align="center" valign="center">
-            <div class="product-left">
-                <h5>總金額</h5>
+                <h5>類型</h5>
             </div>
         </td>
 
@@ -55,33 +50,28 @@
             <td width="200" align="center" valign="center">
                 <div class="product-left">
                     <h5>
-                        <form action="{{ route('AdminDashboardController_order_delete', $show->order_id) }}" method="POST">
+                        <form action="{{ route('AdminDashboardController_goods_delete', $show->id) }}" method="POST">
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}
                             <button class="btn btn-link"><img src="{{asset('/img/core-img/close.png')}}"></button>
                         </form>
                     </h5>
-                </div>
-            </td>
-            <td width="200" align="center" valign="center">
-                <div class="product-left">
-                    <h5>{{$show->order_id}}</h5>
 
                 </div>
             </td>
             <td width="200" align="center" valign="center">
                 <div class="product-left">
-                    <h5>{{$show->name}}</h5>
+                    <h5>{{$show->goodsname1}}</h5>
                 </div>
             </td>
             <td width="200" align="center" valign="center">
                 <div class="product-left">
-                    <h5>{{$show->created_at}}</h5>
+                    <h5>{{$show->price}}</h5>
                 </div>
             </td>
             <td width="200" align="center" valign="center">
                 <div class="product-left">
-                    <h5>{{$show->total}}</h5>
+                    <h5>{{$show->type}}</h5>
                 </div>
             </td>
 

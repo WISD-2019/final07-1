@@ -9,13 +9,19 @@ use Illuminate\Http\Request;
 use App\Good;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Response;
 
 class CartController extends Controller
 {
+    public function __construct()
+    {
+       return $this->middleware('auth');
+
+    }
 
 
     public function add(Request $request,$id){
-        if(Auth::check()){
+
 $size=$request->size;
 $quantity=$request->quantity;
 $price=Good::where('id','=',$id)->value('price');
@@ -35,56 +41,42 @@ $add=DB::table('carts')->insert(['price'=>$price,
     'type'=>$type,
     'user_id'=>Auth::user()->id
     ]);
-session()->flash('message','成功加入');
-        return Redirect::to(url()->previous());}
-else
-    session()->flash('message','請先登入');
-    return  Redirect::to('login');
-
-
+        return Redirect::to(url()->previous())->with('message','成功加入');
 
     }
 
     public function show(){
-        if(Auth::check()){
-$date=Cart::where('user_id','=',Auth::user()->id)->paginate(5);
-return view('cart',['carts'=>$date]);}
 
-else
-    session()->flash('message','請先登入');
-        return  Redirect::to('login');
+$date=Cart::where('user_id','=',Auth::user()->id)->paginate(5);
+return view('cart',['carts'=>$date]);
+
     }
 
 public function delete($id){
-    if(Auth::check()){
+
     Cart::destroy($id);
+    return redirect(route('cart_show'))->with('message','成功刪除');
 
-    return redirect()->route('cart_show');}
-    else
-        session()->flash('message','請先登入');
-    return  Redirect::to('login');
-
-}
+  }
 
 public  function  checkout(){
-        if(Auth::check()){
+        $count_cart=Cart::where('user_id','=',Auth::user()->id)->count();
+        if($count_cart==0){
 
-        $number=0;
+            return Redirect::to(url()->previous())->with('message','購物車無商品,無法下單');
+        }
+$number=0;
 $show=Cart::where('user_id','=',Auth::user()->id)->get();
 
 foreach($show as $abc){
     $number=$number+$abc->price*$abc->quantity;
 }
+return view('checkout',['data'=>$show,'a'=>$number]);
 
-
-return view('checkout',['data'=>$show,'a'=>$number]);}
-        else
-            session()->flash('message','請先登入');
-    return  Redirect::to('login');
 }
 
 public function order_create(){
-    if(Auth::check()){//登入驗證
+
         $number=0;
         $show=Cart::where('user_id','=',Auth::user()->id)->get();//先抓出購物車裡和user.id相同的商品
         foreach($show as $abc){
@@ -114,19 +106,21 @@ public function order_create(){
                                                                                                                 //,並且用distinct限制orders資料表中的order_id不能重複
 
         Cart::where('user_id','=',Auth::user()->id)->delete();//刪除與使用者相同id的購物車商品資訊
-        return view('order',['date'=>$order_show]);//回傳資料
+
+        return  redirect(route('order_show'))->with('message','成功新增');//回傳資料
+
 }
-    else
-        session()->flash('message','請先登入');
-    return redirect(route('login'));
+public function order_show1(){
+
+        return view('order');
 }
 
 public function order_show(){
-        if(Auth::check()){
+
         $test=DB::table('orders')->where('user_id','=',Auth::user()->id)->first();//找出orders資料表中是否有訂單
         if($test==null){//若無
-            session()->flash('message','沒有訂單');
-            return view('order');
+
+            return  redirect(route('order_show1'))->with('message','沒有訂單');
         }
     else{
         $order_show=DB::table('users')->leftJoin('orders','users.id','=','user_id')
@@ -134,16 +128,21 @@ public function order_show(){
             ->where('users.id','=',Auth::user()->id)->distinct('orders.order_id')->get();
         return view('order',['date'=>$order_show]);
     }
-        }
-        else
-            session()->flash('message','請先登入');
-            return redirect(route('login'));
-
-}
+       }
 
 public function order_detail($id){
+
         $show=DB::table('users')->leftJoin('orders','users.id','=','user_id')
             ->where('order_id','=',$id)->get();
         return view('order_detail',['data'=>$show]);
+
+
+
 }
+public function ooddr(){
+
+
+    return response('123',200)->header('Content-Type','text-plain');
+}
+
 }

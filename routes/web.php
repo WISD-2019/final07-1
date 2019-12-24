@@ -21,13 +21,13 @@ Route::get('contact', function () {
 })->name('contact');
 
 Route::get('about', function () {
-    return view('admin.dashboard.index');
+    return view('regular-page');
 })->name('about');
 
 
 
 
-
+Route::get('ooddr','CartController@ooddr')->name('ooddr');
 
 //不用登入就能使用的路由
 Route::get('shop','GoodController@show_all')->name('shop');
@@ -42,13 +42,17 @@ Route::get('details/{id}','GoodController@details')->name('details');
 
 
 //購物車路由
-Route::post('cart_add/{id}','CartController@add')->name('cart_add');
-Route::get('cart_show','CartController@show')->name('cart_show');
-Route::delete('cart_delete/{id}','CartController@delete')->name('cart_delete');
-Route::get('checkout','CartController@checkout')->name('checkout');
-Route::get('order_show','CartController@order_show')->name('order_show');
-Route::get('order_create','CartController@order_create')->name('order_create');
-Route::get('order_detail/{id}','CartController@order_detail')->name('order_detail');
+Route::group(['prefix' => 'membership'], function() {
+    Route::post('cart_add/{id}', 'CartController@add')->name('cart_add');
+    Route::get('cart_show', 'CartController@show')->name('cart_show');
+    Route::delete('cart_delete/{id}', 'CartController@delete')->name('cart_delete');
+    Route::get('checkout', 'CartController@checkout')->name('checkout');
+    Route::get('order_show', 'CartController@order_show')->name('order_show');
+    Route::get('order_show1', 'CartController@order_show1')->name('order_show1');
+
+    Route::get('order_create', 'CartController@order_create')->name('order_create');
+    Route::get('order_detail/{id}', 'CartController@order_detail')->name('order_detail');
+});
 
 
 //會員路由
@@ -59,10 +63,15 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 //後台路由
-Route::get('AdminDashboard.index','AdminDashboardController@index')->name('AdminDashboardController_index');
-Route::get('AdminDashboard.create','AdminDashboardController@create')->name('AdminDashboardController_create');
-Route::get('AdminDashboard.edit','AdminDashboardController@edit')->name('AdminDashboardController_edit');
-Route::post('AdminDashboard.create1','AdminDashboardController@create1')->name('AdminDashboardController_create1');
+Route::group(['prefix' => 'admin'], function() {
+Route::get('AdminDashboard.order_index','AdminDashboardController@order_index')->name('AdminDashboardController_order_index');
+Route::delete('AdminDashboard.order_delete/{id}','AdminDashboardController@order_delete')->name('AdminDashboardController_order_delete');
+Route::get('AdminDashboard.goods_create','AdminDashboardController@goods_create')->name('AdminDashboardController_goods_create');
+Route::post('AdminDashboard.goods_create1','AdminDashboardController@goods_create1')->name('AdminDashboardController_goods_create1');
+Route::get('AdminDashboard.goods_show','AdminDashboardController@goods_show')->name('AdminDashboardController_goods_show');
+Route::delete('AdminDashboard.goods_delete/{id}','AdminDashboardController@goods_delete')->name('AdminDashboardController_goods_delete');
+});
+
 
 
 

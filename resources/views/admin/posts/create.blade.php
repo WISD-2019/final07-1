@@ -30,7 +30,7 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <form role="form" action="{{route('AdminDashboardController_create1')}}" method="post" enctype="multipart/form-data">
+        <form role="form" action="{{route('AdminDashboardController_goods_create1')}}" method="post" enctype="multipart/form-data">
 {{csrf_field()}}
             <div class="form-group">
                 <label>商品名稱：</label>

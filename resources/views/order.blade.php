@@ -50,7 +50,7 @@
                 </td>
                 <td width="250" align="center" valign="center">
                     <div class="product-right">
-                       <h5> <a href="{{route('order_detail',$data->order_id)}}">{{$data->order_id}}</a></h5>
+                     <u><a  href="{{route('order_detail',$data->order_id)}}">{{$data->order_id}}</a></u>
                     </div>
                 </td>
 
@@ -66,6 +66,8 @@
                         <h6>{{$data->total}}</h6>
                     </div>
                 </td>
+
+
 
             </tr>
         @endforeach
