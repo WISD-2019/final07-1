@@ -22,12 +22,12 @@
     <tr>
         <td width="200" align="center" valign="center">
             <div class="product-left">
-                <h5>刪除</h5>
+                <h5>功能</h5>
             </div>
         </td>
         <td width="200" align="center" valign="center">
             <div class="product-left">
-                <h5>訂單編號</h5>
+                <h5 >訂單編號</h5>
             </div>
         </td>
         <td width="200" align="center" valign="center">
@@ -55,11 +55,12 @@
             <td width="200" align="center" valign="center">
                 <div class="product-left">
                     <h5>
-                        <form action="{{ route('AdminDashboardController_order_delete', $show->order_id) }}" method="POST">
+                        <form id="1234" action="{{ route('AdminDashboardController_order_delete', $show->order_id) }}" method="POST">
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}
-                            <button class="btn btn-link"><img src="{{asset('/img/core-img/close.png')}}"></button>
+                            <input class="btn btn-success" type="submit" name="submit" value="刪除" onclick="return(confirm('確認要刪除嗎？'))">
                         </form>
+
                     </h5>
                 </div>
             </td>

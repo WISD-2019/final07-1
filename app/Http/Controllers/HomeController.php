@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        session()->flash('message','歡迎登入'.Auth::user()->name);
-        return redirect('/');
+
+        return redirect('/')->with('message','歡迎登入'.Auth::user()->name);
     }
 }

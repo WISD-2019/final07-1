@@ -100,7 +100,7 @@
         </table>
 
         <div class="add-to-cart-btn">
-            <a href="{{route('checkout')}}" class="btn essence-btn">下單</a>
+            <a href="{{route('checkout')}}" class="btn essence-btn" onclick="return(confirm('確認要下單嗎？'))">下單</a>
         </div>
 
         <div class="clearfix mr-50 mt-50 mb-50">

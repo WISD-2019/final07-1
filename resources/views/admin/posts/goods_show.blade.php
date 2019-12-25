@@ -22,7 +22,7 @@
     <tr>
         <td width="200" align="center" valign="center">
             <div class="product-left">
-                <h5>刪除</h5>
+                <h5>功能</h5>
             </div>
         </td>
         <td width="200" align="center" valign="center">
@@ -53,7 +53,8 @@
                         <form action="{{ route('AdminDashboardController_goods_delete', $show->id) }}" method="POST">
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}
-                            <button class="btn btn-link"><img src="{{asset('/img/core-img/close.png')}}"></button>
+                            <input class="btn btn-success" type="submit" name="submit" value="刪除" onclick="return(confirm('確認要刪除嗎？'))">
+
                         </form>
                     </h5>
 

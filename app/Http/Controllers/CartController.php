@@ -99,12 +99,6 @@ public function order_create(){
             $create_order->user_id=Auth::user()->id;
             $create_order->save();
         }
-
-        $order_show=DB::table('users')->leftJoin('orders','users.id','=','user_id')//找出users資料表中id欄位與orders資料表中user_id欄位相同的資料
-            ->select('users.name','users.id','orders.order_id','orders.created_at','orders.total')//只要users資料表中name欄位和id欄位,和orders資料表中order_id欄位和created_at欄位跟total欄位
-            ->where('users.id','=',Auth::user()->id)->distinct('orders.order_id')->get();//進階搜尋上述的資料進行篩選users資料表中id與現在登入的id相符者
-                                                                                                                //,並且用distinct限制orders資料表中的order_id不能重複
-
         Cart::where('user_id','=',Auth::user()->id)->delete();//刪除與使用者相同id的購物車商品資訊
 
         return  redirect(route('order_show'))->with('message','成功新增');//回傳資料
@@ -123,9 +117,10 @@ public function order_show(){
             return  redirect(route('order_show1'))->with('message','沒有訂單');
         }
     else{
-        $order_show=DB::table('users')->leftJoin('orders','users.id','=','user_id')
-            ->select('users.name','users.id','orders.order_id','orders.created_at','orders.total')
-            ->where('users.id','=',Auth::user()->id)->distinct('orders.order_id')->get();
+        $order_show=DB::table('users')->leftJoin('orders','users.id','=','user_id')//找出users資料表中id欄位與orders資料表中user_id欄位相同的資料
+        ->select('users.name','users.id','orders.order_id','orders.created_at','orders.total')//只要users資料表中name欄位和id欄位,和orders資料表中order_id欄位和created_at欄位跟total欄位
+        ->where('users.id','=',Auth::user()->id)->distinct('orders.order_id')->get();//進階搜尋上述的資料進行篩選users資料表中id與現在登入的id相符者
+                                                                                                          //,並且用distinct限制orders資料表中的order_id不能重複
         return view('order',['date'=>$order_show]);
     }
        }

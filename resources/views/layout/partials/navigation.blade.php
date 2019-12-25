@@ -97,19 +97,13 @@
                 </li>
             @endguest
         <!-- User Login Info -->
-@if(Auth::check())
+
             <div class="user-login-info">
 
                 <a href="{{route('order_show')}}"><img src="{{asset('/img/core-img/user.svg')}}" alt=""></a>
 
             </div>
-            @else
-                <div class="user-login-info">
 
-                    <a href="{{route('login')}}"><img src="{{asset('/img/core-img/user.svg')}}" alt=""></a>
-
-                </div>
-            @endif
 
             <!-- Cart Area -->
             <div class="cart-area">

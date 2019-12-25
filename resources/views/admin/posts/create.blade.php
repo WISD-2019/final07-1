@@ -18,14 +18,7 @@
 </div>
 <!-- /.row -->
 
-<div class="row">
-    <div class="col-lg-12">
-        <div class="alert alert-danger alert-dismissable">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <i class="fa fa-info-circle"></i>  <strong>警告！</strong> 請修正表單錯誤：
-        </div>
-    </div>
-</div>
+
 <!-- /.row -->
 
 <div class="row">
@@ -34,20 +27,20 @@
 {{csrf_field()}}
             <div class="form-group">
                 <label>商品名稱：</label>
-                <input class="form-control" name="goodsname1" placeholder="請輸入商品名稱">
+                <input class="form-control" name="goodsname1" placeholder="請輸入商品名稱" required>
             </div>
             <div class="form-group">
                 <label>商品價格：</label>
-                <input  class="form-control" name="price" placeholder="請輸入商品價格">
+                <input  class="form-control" name="price" placeholder="請輸入商品價格" required>
             </div>
             <div class="form-group">
                 <label>商品照片：</label>
-                <input type="file" name="photo1"  size="5">
-                <input type="file" name="photo2" size="5">
+                <input type="file" name="photo1"  size="5"required>
+                <input type="file" name="photo2" size="5"required>
             </div>
             <div class="form-group">
                 <label>商品類型：</label>
-                <select name="type" id="goodstype">
+                <select name="type" id="goodstype" required>
                     <option value="長袖" >長袖</option>
                     <option value="短袖" >短袖</option>
                     <option value="長褲" >長褲</option>
