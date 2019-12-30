@@ -91,7 +91,7 @@
                     <form action="{{ route('cart_delete', $cart->id) }}" method="POST">
                         {{ csrf_field() }}
                         {{ method_field('DELETE') }}
-                        <button class="btn btn-link"><img src="{{asset('/img/core-img/close.png')}}"></button>
+                        <input  class="btn btn-success" type="submit" name="submit" value="刪除" onclick="return(confirm('確認要刪除嗎？'))">
                     </form>
                 </div>
             </td>

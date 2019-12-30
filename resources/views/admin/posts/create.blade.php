@@ -53,7 +53,7 @@
 
 
             <div class="text-right">
-                <button type="submit" class="btn btn-success">新增</button>
+                <input class="btn btn-success" type="submit" name="submit" value="新增" onclick="return(confirm('確認要新增嗎？'))">
             </div>
 
             <p>&nbsp;</p>

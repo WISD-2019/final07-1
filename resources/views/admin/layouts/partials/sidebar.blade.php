@@ -27,9 +27,11 @@
                 </li>
                 <li>
                     <a href="{{route('logout')}}"  onclick="event.preventDefault();
-                    document.getElementById('logout-form').submit();"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                    document.getElementById('aaas').click(); "><i class="fa fa-fw fa-power-off" ></i> Log Out</a>
                 </li>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    <input id="aaas" class="btn btn-success" type="submit" name="submit" value="刪除" onclick="return(confirm('確認要登出嗎？'))">
+
                     @csrf
                 </form>
             </ul>

@@ -77,15 +77,15 @@
                         {{ Auth::user()->name }} <span class="caret"></span>
                     </a>
 
-
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{ route('logout') }}"
                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                                     document.getElementById('aaas').click();" >
                             {{ __('登出') }}
                         </a>
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            <input id="aaas" class="btn btn-success" type="submit" name="submit" value="刪除" onclick="return(confirm('確認要登出嗎？'))">
                             @csrf
                         </form>
                         @if(Auth::user()->role==1)

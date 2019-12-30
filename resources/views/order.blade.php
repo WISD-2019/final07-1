@@ -14,7 +14,7 @@
         </div>
     </div>
 
-    <table>
+    <table style="line-height:50px;">
         <tr>
             <td width="200" align="center" valign="center">
                 <div class="product-left">
