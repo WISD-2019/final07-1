@@ -8,7 +8,7 @@
             <div class="row h-100 align-items-center">
                 <div class="col-12">
                     <div class="page-title text-center">
-                        <h2>Fashion Blog</h2>
+                        <h2>衣服商城</h2>
                     </div>
                 </div>
             </div>
