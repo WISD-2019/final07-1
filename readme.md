@@ -1,3 +1,2 @@
-<p align="center"><img src="https://imgur.com/KDC7zEi" width="400"></p>
 
-[Imgur](https://i.imgur.com/KDC7zEi.jpg)
+<a href="https://imgur.com/KDC7zEi"><img src="https://i.imgur.com/KDC7zEi.jpg" title="source: imgur.com" /></a>
