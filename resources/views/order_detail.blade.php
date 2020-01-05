@@ -48,7 +48,7 @@
         <tr>
             <td width="200" align="center" valign="center">
                 <div class="product-left">
-                    <h5><img src="{{asset("storage/img/product-img/$show->photo1")}}" alt=""></h5>
+                    <h5><img src="{{asset("img/product-img/$show->photo1")}}" alt=""></h5>
                 </div>
             </td>
             <td width="200" align="center" valign="center">

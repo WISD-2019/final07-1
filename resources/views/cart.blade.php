@@ -54,7 +54,7 @@
         <tr >
             <td width="200" align="center" valign="center">
                 <div class="product-left">
-                    <img src={{asset("storage/img/product-img/$cart->photo1")}}>
+                    <img src={{asset("img/product-img/$cart->photo1")}}>
                 </div>
             </td>
             <td width="250" align="center" valign="center">
