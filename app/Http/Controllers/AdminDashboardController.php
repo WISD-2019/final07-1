@@ -50,8 +50,9 @@ public function goods_create1(Request $request){
     $creat->type=$request->type;
     $creat->save();
 //檔案儲存至 storage底下的public/ing/product-img 並且使用php artisan storage:link使得public資料夾共用storage資料夾 以方便使用asset方法抓取資料
-   $request->file('photo1')->storeas('public/img/product-img',$chi_name);
-    $request->file('photo2')->storeas('public/img/product-img',$chi_name2);
+    $destinationPath = public_path().'/img/product-img';
+   $request->file('photo1')->move($destinationPath,$chi_name);
+    $request->file('photo2')->move($destinationPath,$chi_name2);
 
     return redirect(route('AdminDashboardController_goods_create'))->with('message','新增成功');
 }
