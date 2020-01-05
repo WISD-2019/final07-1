@@ -39,7 +39,7 @@ $add=DB::table('carts')->insert(['price'=>$price,
     'photo1'=>$photo1,
     'photo2'=>$photo2,
     'type'=>$type,
-    'user_id'=>Auth::user()->id
+    'user_id'=>$request->user()->id
     ]);
         return Redirect::to(url()->previous())->with('message','成功加入');
 
