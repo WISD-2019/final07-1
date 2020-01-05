@@ -1,72 +1,87 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
+<a href="https://imgur.com/Sn3lDsa"><img src="https://i.imgur.com/Sn3lDsa.jpg?1" title="source: imgur.com" /></a>
+<a href="https://imgur.com/eqVRozJ"><img src="https://i.imgur.com/eqVRozJ.jpg?1" title="source: imgur.com" /></a>
+<a href="https://imgur.com/l2WHFKx"><img src="https://i.imgur.com/l2WHFKx.jpg?1" title="source: imgur.com" /></a>
+<a href="https://imgur.com/QdXzD9r"><img src="https://i.imgur.com/QdXzD9r.jpg?1" title="source: imgur.com" /></a>
+<a href="https://imgur.com/YVm8N3F"><img src="https://i.imgur.com/YVm8N3F.jpg" title="source: imgur.com" /></a>
+<a href="https://imgur.com/OUQd7iF"><img src="https://i.imgur.com/OUQd7iF.jpg?1" title="source: imgur.com" /></a>
+<a href="https://imgur.com/OmZg4pE"><img src="https://i.imgur.com/OmZg4pE.jpg?1" title="source: imgur.com" /></a>
+<a href="https://imgur.com/YAUmaNy"><img src="https://i.imgur.com/YAUmaNy.jpg?1" title="source: imgur.com" /></a>
+<a href="https://imgur.com/EI2jgum"><img src="https://i.imgur.com/EI2jgum.jpg?1" title="source: imgur.com" /></a>
+<a href="https://imgur.com/PqNE85k"><img src="https://i.imgur.com/PqNE85k.jpg?1" title="source: imgur.com" /></a>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+## 衣服商城購物車系統
+## 網站功能
+//不用登入就能使用的路由</br>
+Route::get('shop','GoodController@show_all')->name('shop');//購物首頁
+Route::get('show_shortsleeve','GoodController@show_shortsleeve')->name('show_shortsleeve');//顯示短袖
+Route::get('show_longsleeve','GoodController@show_longsleeve')->name('show_longsleeve');//顯示長袖
+Route::get('show_trousers','GoodController@show_trousers')->name('show_trousers');//顯示長褲
+Route::get('show_shortpants','GoodController@show_shortpants')->name('show_shortpants');//顯示短褲
+Route::get('show_coat','GoodController@show_coat')->name('show_coat');//顯示外套
+Route::get('search','GoodController@search')->name('search');//顯示查詢結果
+Route::get('details/{id}','GoodController@details')->name('details');//顯示商品details
 
-## About Laravel
+//購物車路由</br>
+Route::group(['prefix' => 'membership'], function() {</br>
+    Route::post('cart_add/{id}', 'CartController@add')->name('cart_add');//購物車新增商品功能</br>
+    Route::get('cart_show', 'CartController@show')->name('cart_show');//顯示購物車內容物</br>
+    Route::delete('cart_delete/{id}', 'CartController@delete')->name('cart_delete');//刪除購物車內容物功能</br>
+    Route::get('checkout', 'CartController@checkout')->name('checkout');//結帳功能</br>
+    Route::get('order_show', 'CartController@order_show')->name('order_show');//顯示已下單的訂單(不包含訂單為空)</br>
+    Route::get('order_show1', 'CartController@order_show1')->name('order_show1');//顯示已下單的訂單</br>
+    Route::get('order_create', 'CartController@order_create')->name('order_create');//訂單建立功能</br>
+    Route::get('order_detail/{id}', 'CartController@order_detail')->name('order_detail');//訂單details</br>
+});
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+//會員路由,註冊,登入</br>
+Auth::routes();</br>
+Route::get('/home', 'HomeController@index')->name('home');//中介層auth,guest所使用的route
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+//後台路由,必須為使用者才可進入</br>
+Route::group(['prefix' => 'admin'], function() {</br>
+Route::get('AdminDashboard.order_index','AdminDashboardController@order_index')->name('AdminDashboardController_order_index');//訂單管理頁面</br>
+Route::delete('AdminDashboard.order_delete/{id}','AdminDashboardController@order_delete')->name('AdminDashboardController_order_delete');//訂單刪除功能</br>
+Route::get('AdminDashboard.goods_create','AdminDashboardController@goods_create')->name('AdminDashboardController_goods_create');//顯示商品新增頁面</br>
+Route::post('AdminDashboard.goods_create1','AdminDashboardController@goods_create1')->name('AdminDashboardController_goods_create1');//處理商品新增功能</br>
+Route::get('AdminDashboard.goods_show','AdminDashboardController@goods_show')->name('AdminDashboardController_goods_show');//顯示已新增的商品</br>
+Route::delete('AdminDashboard.goods_delete/{id}','AdminDashboardController@goods_delete')->name('AdminDashboardController_goods_delete');//刪除功能,可使已新增之商品進行刪除</br>
+});</br>
+## 網站初始專案以及樣板
+套用bootstrap(網路商店模板)(http://link.zhihu.com/?target=https%3A//colorlib.com/download/1023/)</br>
+後台樣板(https://startbootstrap.com/templates/simple-sidebar/)</br>
+## 網站系統復原步驟
+1.複製https://github.com/WISD-2019/final07-1.git本系統在GitHub的專案，打開Source tree，點選clone後，輸入以下資料</br>
+--Source Path:https://github.com/WISD-2019/final07-1.git</br>
+--Destination Path:C:\wagon\uwamp\www\final07-1</br>
+2.打開cmder，切換至專案所在資料夾，cd final07-1</br>
+--在cmder輸入以下命令，以復原此系統：</br>
+--composer install</br>
+--composer run‐script post‐root‐package‐install</br></br>
+--composer run‐script post‐create‐project‐cmd</br>
+3.將專案打開 在.env檔案內輸入資料庫主機IP、Port、名稱、與帳密如下：</br>
+--DB_HOST=127.0.0.1</br>
+--DB_PORT=33060</br>
+--DB_DATABASE=final07-1</br>
+--DB_USERNAME=root</br>
+--DB_PASSWORD=root</br>
+4.在cmder輸入以下命令，將所有資料表產生至final07-1資料庫內</br>
+--php artisan migrate</br>
+--php artisan </br>
+--並且使用php artisan storage:link使得public資料夾共用storage資料夾 以方便使用asset方法抓取資料</br>
+5.開啟UwAmp，點選PHPMyAdmin，輸入以下資料後並點擊登入，進入MySQL後，建立新資料庫，名稱為final07-1，將final07-1.sql(C:\wagon\uwamp\www\final07-1\database\final07-1.sql)匯入</br>
+--資料庫系統:MYSQL</br>
+--伺服器:localhost:33060</br>
+--帳號:root</br>
+--密碼:root</br>
+6.在UwAmp下，點選Apache config，選擇port 8000 ，並在Document Root 輸入{DOCUMENTPATH}/final07-1/public</br>
+## 使用者帳號與後台帳號
+1.前台帳號請自行申請</br>
+2.後台帳號為前台帳號之延伸</br>
+--進入Mysql admin頁面後</br>
+--進入user資料表 將欲成為管理員使用者role欄位值改為1</br>
+<a href="https://imgur.com/YI0CGYT"><img src="https://i.imgur.com/YI0CGYT.jpg" title="source: imgur.com" /></a>
+--接著在前端使用者就可以在登出那裏找到通往後端的連接和權限</br>
+<a href="https://imgur.com/HZGZow0"><img src="https://i.imgur.com/HZGZow0.jpg" title="source: imgur.com" /></a>
+## 系統開發人員
+3A532012林璟柏
