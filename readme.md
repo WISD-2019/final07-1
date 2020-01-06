@@ -68,12 +68,12 @@ Route::delete('AdminDashboard.goods_delete/{id}','AdminDashboardController@goods
 4.在cmder輸入以下命令，將所有資料表產生至final07-1資料庫內</br>
 --php artisan migrate</br>
 --php artisan </br>
---並且使用php artisan storage:link使得public資料夾共用storage資料夾 以方便使用asset方法抓取資料</br>
 5.開啟UwAmp，點選PHPMyAdmin，輸入以下資料後並點擊登入，進入MySQL後，建立新資料庫，名稱為final07-1，將final07-1.sql(C:\wagon\uwamp\www\final07-1\database\final07-1.sql)匯入</br>
 --資料庫系統:MYSQL</br>
 --伺服器:localhost:33060</br>
 --帳號:root</br>
 --密碼:root</br>
+--進入mysql之後 把goods,cart,order欄位的
 6.在UwAmp下，點選Apache config，選擇port 8000 ，並在Document Root 輸入{DOCUMENTPATH}/final07-1/public</br>
 ## 使用者帳號與後台帳號
 1.前台帳號請自行申請</br>
