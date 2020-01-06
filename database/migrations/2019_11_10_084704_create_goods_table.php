@@ -17,7 +17,7 @@ class CreateGoodsTable extends Migration
             $table->bigIncrements('id');
             $table->integer('price');
             $table->string('goodsname1');
-            $table->string('goodsname2');
+            $table->string('goodsname2')->nullable();
             $table->string('photo1');
             $table->string('photo2');
             $table->string('type');

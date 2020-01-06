@@ -19,7 +19,7 @@ class CreateCartsTable extends Migration
             $table->string('size');
             $table->integer('quantity');
             $table->string('goodsname1');
-            $table->string('goodsname2');
+            $table->string('goodsname2')->nullable();
             $table->string('photo1');
             $table->string('photo2');
             $table->string('type');
