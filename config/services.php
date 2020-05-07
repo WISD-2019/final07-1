@@ -33,5 +33,8 @@ return [
     'sparkpost' => [
         'secret' => env('SPARKPOST_SECRET'),
     ],
+    'google' => ['client_id'=> env('GOOGLE_API_ID'),
+        'client_secret' => env('GOOGLE_API_SECRET'),
+        'redirect'=> env('GOOGLE_CALLBACK') ],
 
 ];

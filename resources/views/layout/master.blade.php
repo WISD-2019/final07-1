@@ -1,5 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+<style>
+
+
+
+    html {
+        min-height: 100%; /* 非常重要 */
+        position: relative;
+    }
+
+    body {
+        /* Margin bottom by footer height */
+        margin-bottom: 80px;
+    }
+
+    footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 80px;
+    }
+</style>
+
 
 <head>
     <meta charset="UTF-8">

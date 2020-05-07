@@ -47,4 +47,6 @@ class User extends Authenticatable
         return $this->hasMany(Order::class);
 
     }
+    public function socialuser(){
+        return $this->hasOne(SocialUser::class,'user_id','id'); }
 }

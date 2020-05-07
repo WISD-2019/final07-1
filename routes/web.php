@@ -73,6 +73,9 @@ Route::delete('AdminDashboard.goods_delete/{id}','AdminDashboardController@goods
 });
 
 
+    Route::get('{provider}/redirect',['as' => 'social.redirect','uses' =>'SocialController@getSocialRedirect']);
+    Route::get('{provider}/callback',['as' => 'social.handle','uses'=>'SocialController@getSocialCallback']);
+
 
 
 
